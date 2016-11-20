@@ -13,7 +13,7 @@ func main() {
 	useMd5 := flag.Bool("m", false, "计算某个文件夹内的md5")
 	useDecode := flag.Bool("d", false, "解码qstp串")
 
-	path := flag.String("path", "", "参数 文件或文件夹路径")
+	path := flag.String("p", "", "参数 文件或文件夹路径")
 	flag.Parse()
 
 	use := *useSplit || *useMd5 || *useDecode
