@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"strings"
 )
 
 //O 原始数据
@@ -25,8 +26,15 @@ func Decode(filePath *string) {
 	}
 	var buffer bytes.Buffer
 	if inputBytes, err := ioutil.ReadFile(*filePath); err == nil {
+		inputBytes = []byte(strings.TrimPrefix(string(inputBytes), "qstp://"))
 		for _, char := range inputBytes {
-			buffer.WriteByte(DecryptMapping[char])
+			var tmp byte
+			if DecryptMapping[char] == 0 {
+				tmp = char
+			} else {
+				tmp = DecryptMapping[char]
+			}
+			buffer.WriteByte(tmp)
 		}
 		fmt.Println("解密后数据：")
 		fmt.Printf("%s", buffer.Bytes())
