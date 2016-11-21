@@ -10,4 +10,4 @@ mars3.2 测试工具
 
 ## 示例
     //分解一个暴风包，会在当前目录下创建一个AFTER目录
-    main -s -f XXX.bfp
+    main -s -p XXX.bfp
